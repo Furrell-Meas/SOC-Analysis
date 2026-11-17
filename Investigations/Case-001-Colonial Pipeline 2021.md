@@ -2,13 +2,13 @@
 
 | Field | Value |
 |---|---|
-| Case ID | [e.g. CASE-002] |
-| Incident name | [Victim + year, e.g. "MGM Resorts 2023"] |
-| Analyst | [Your name / GitHub handle] |
-| Date opened | [YYYY-MM-DD] |
+| Case ID | Case-001 |
+| Incident name | Colonial Pipeline 2021 |
+| Analyst | Furrell-Meas |
+| Date opened | 17 Nov 2026 |
 | Date closed | [YYYY-MM-DD] |
-| Status | [Open / In progress / Closed] |
-| ATT&CK version used | [e.g. Enterprise v20. Check https://attack.mitre.org/resources/versions/] |
+| Status | In progress |
+| ATT&CK version used |  Enterprise v20.1 |
 | Case type | Retrospective analysis of a public incident (open-source only) |
 | Classification | TLP:CLEAR (public sources only) |
 
