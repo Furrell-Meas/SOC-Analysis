@@ -64,12 +64,24 @@
 
 ## 5. Timeline of Events *(Step 3: Build the timeline)*
 
-*Write **facts only**, in chronological order. No ATT&CK IDs yet. Every row needs a source. If the time is unknown, write "Unknown – after E3" or similar.*
-
-| Event | Date / time | What happened (fact) | Source(s) | Confirmed or claimed? |
+| Event | Date | What happened (fact) | Source(s) | Confirmed or claimed? |
 |---|---|---|---|---|
-| E1 | | | S1 | Confirmed |
-| E2 | | | S3 | Claimed by attacker |
+| E1 | 29 April 2021 | Logged in to Colonial's network through a legacy VPN account that was no longer meant to be in use. The account used only a password (no MFA). | S3, S7 | Confirmed |
+| E2 | Unknown (after E1) | 29 April - 7 May (exact date unknown) \| Stole nearly 100 GB data from a share drive, in about two hours | S7 | Confirmed |
+| E3 | 07 May 2021 | Before ~ 5 a.m. \| Deployed DarkSide ransomware on Colonial's IT network and left a ransom note demanding cryptocurrency. | S2, S3 | Confirmed |
+| E4 | 07 May 2021 | just before 5 a.m. \| A control-room employee found the ransom note and told an operations supervisor. | S3, S7 | Confirmed |
+| E5 | 07 May 2021 | 6:10 a.m. \| Shut down the entire pipeline and disconnected certain OT systems as precaution. | S2, S3 | Confirmed |
+| E6 | 07 May 2021 | morning \| Contacted the FBI | S7 | Confirmed |
+| E7 | 07 May 2021 | afternoon \| CISA joined a call with Colonial and the FBI | S7 | Confirmed |
+| E8 | 07 May 2021 | (time unknown) \| Engaged Mandiant to investigate | S7 | Confirmed |
+| E9 | 07 May 2021 | evening \| Decided to negotiate with the attackers. | S7 | Confirmed |
+| E10 | 08 May 2021 | Paid a ransom of about 75 bitcoin (~US$4.4M). | S1, S7 | Confirmed |
+| E11 | Unknown (after E10) | Gave Colonial a decryptor, which worked but was "not a perfect tool". | S4, S7 | Confirmed |
+| E12 | Unknown (after E11) | Mandiant Swept the network and installed new detection tools to catch follow-up attacks | S3 | Confirmed |
+| E13 | 12 May 2021 | ~5 p.m. \| Began resuming fuel shipments | S6, S7 | Confirmed |
+| E14 | 07 June 2021 | DOJ seized 63.7 bitcoin (~US$2.3M) traced to the ransom payment | S1 | Confirmed |
+| E15 | 08 June 2021 | CEO testified to the US Senate about the attack | S4, S7 | Confirmed |
+
 
 ---
 
