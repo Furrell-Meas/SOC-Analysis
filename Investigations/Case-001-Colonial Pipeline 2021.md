@@ -67,32 +67,47 @@
 | Event | Date | Who | What happened (fact) | Source(s) | Confirmed or claimed? |
 |---|---|---|---|---|---|
 | E1 | 29 April 2021 | Attacker | Logged in to Colonial's network through a legacy VPN account that was no longer meant to be in use. The account used only a password (no MFA). | S3, S7 | Confirmed |
-| E2 | 29 April - 7 May (exact date unknown) | Attacker | Stole nearly 100 GB data from a share drive, in about two hours | S7 | Confirmed |
-| E3 | 07 May 2021, Before ~ 5 a.m. | Attacker | Deployed DarkSide ransomware on Colonial's IT network and left a ransom note demanding cryptocurrency. | S2, S3 | Confirmed |
-| E4 | 07 May 2021, just before 5 a.m. | Victim | A control-room employee found the ransom note and told an operations supervisor. | S3, S7 | Confirmed |
-| E5 | 07 May 2021, 6:10 a.m. | Victim | Shut down the entire pipeline and disconnected certain OT systems as precaution. | S2, S3 | Confirmed |
-| E6 | 07 May 2021, morning | Victim | Contacted the FBI | S7 | Confirmed |
-| E7 | 07 May 2021, afternoon | Victim | CISA joined a call with Colonial and the FBI | S7 | Confirmed |
-| E8 | 07 May 2021, (time unknown) | Victim | Engaged Mandiant to investigate | S7 | Confirmed |
-| E9 | 07 May 2021, evening | Victim | Decided to negotiate with the attackers. | S7 | Confirmed |
-| E10 | 08 May 2021 | Victim | Paid a ransom of about 75 bitcoin (~US$4.4M). | S1, S7 | Confirmed |
-| E11 | Unknown (after E10) | Attacker | Gave Colonial a decryptor, which worked but was "not a perfect tool". | S4, S7 | Confirmed |
-| E12 | Unknown (after E11) | Mandiant | Swept the network and installed new detection tools to catch follow-up attacks | S3 | Confirmed |
-| E13 | 12 May 2021, ~5 p.m.| Victim | Began resuming fuel shipments | S6, S7 | Confirmed |
-| E14 | 07 June 2021 | DOJ | Seized 63.7 bitcoin (~US$2.3M) traced to the ransom payment | S1 | Confirmed |
-| E15 | 08 June 2021 | Victim | CEO testified to the US Senate about the attack | S4, S7 | Confirmed |
+| E2 | 29 April – 7 May 2021 (exact date unknown) | Attacker | Moved around Colonial's IT network. No sign of access to the OT network. | S3 | Confirmed (investigator) |
+| E3 | 29 April – 7 May 2021 (exact date unknown) | Attacker | Stole nearly 100 GB of data from a share drive, in about two hours. | S3, S7 | Confirmed |
+| E4 | 07 May 2021, before ~5 a.m. | Attacker | Deployed DarkSide ransomware, encrypting Colonial's IT systems. Left a ransom note demanding cryptocurrency for a decryption key, stating that data had been encrypted and stolen, and threatening to leak the data if not paid. | S2, S3, S7 | Confirmed |
+| E5 | 07 May 2021, just before 5 a.m. | Victim | A control-room employee found the ransom note and told an operations supervisor. | S3, S7 | Confirmed |
+| E6 | 07 May 2021, by 6:10 a.m. | Victim | Shut down the entire pipeline and disconnected certain OT systems as a precaution. | S2, S3 | Confirmed |
+| E7 | 07 May 2021, morning | Victim | Contacted the FBI. | S7 | Confirmed |
+| E8 | 07 May 2021, just after noon | Victim | CISA joined a call with Colonial and the FBI. | S7 | Confirmed |
+| E9 | 07 May 2021 (time unknown) | Victim | Engaged Mandiant to investigate. | S7 | Confirmed |
+| E10 | 07 May 2021, evening | Victim | Decided to negotiate with the attackers. | S7 | Confirmed |
+| E11 | 08 May 2021 | Victim | Paid a ransom of about 75 bitcoin (~US$4.4M). | S1, S7 | Confirmed |
+| E12 | Unknown (after E11) | Attacker | Gave Colonial a decryption tool, which worked but was "not a perfect tool". | S4, S7 | Confirmed |
+| E13 | Unknown (after E9) | Mandiant | Swept the network and installed new detection tools to catch follow-up attacks. | S3 | Confirmed (investigator) |
+| E14 | 12 May 2021, ~5 p.m. ET | Victim | Began resuming fuel shipments. | S6, S7 | Confirmed |
+| E15 | 07 June 2021 | DOJ | Seized 63.7 bitcoin (~US$2.3M) traced to the ransom payment. | S1 | Confirmed |
+| E16 | 08 June 2021 | Victim | CEO testified to the US Senate about the attack. | S4, S7 | Confirmed |
 
+**Investigation findings (undated):**
+- Mandiant found no evidence that the attackers reached the OT network. The attack was detected only in IT. (S2, S7)
+- Mandiant saw no attacker activity before 29 April and no evidence of phishing. (S3)
+
+**Intelligence gaps:**
+- How the attackers obtained the VPN password is unknown. It was later found in a batch of leaked passwords on the dark web, but Mandiant could not confirm this was the source. (S3, S7)
+- The exact dates of E2 and E3 are not public.
+- The exact time the decryption tool was received (E12) is not public.
 
 ---
 
 ## 6. Behaviour Extraction *(Step 4: Break events into behaviours)*
 
-*Rewrite each event as **one attacker action** in the form "Attacker [verb] [object] [how/where]". One event can produce several behaviours. Victim actions (e.g. "Uber rotated keys") are **not** behaviours. They go in Section 12.*
-
 | Behaviour | From event | Attacker action | Evidence (paraphrase + source) |
 |---|---|---|---|
-| B1 | E1 | Attacker loggedin to Colonial;s network through a legacy VPN account that was no longer meant to be in use, with no MFA used. | Colonial is unsure how the attackers obtained the username (S3, S7)|
+| B1 | E1 | Logged in to Colonial's VPN using the valid password of an unused legacy account. | Mandiant: entry via an unused VPN account on 29 April (S3). CEO: legacy VPN profile with single-factor authentication only (S7). |
+| B2 | E2 | Moved around Colonial's IT network (but not into OT). | Mandiant: attackers moved within the IT network, with no sign of OT access (S3). |
+| B3 | E3 | Collected data from a shared drive on the IT network. | CEO: the data was exfiltrated off the share drive (S7). |
+| B4 | E3 | Stole (exfiltrated) about 100 GB of data in about two hours. | Senator Peters: ~100 GB in two hours (S7). Bloomberg: ~100 GB stolen (S3). CEO confirmed the exfiltration (S7). |
+| B5 | E4 | Deployed DarkSide ransomware, encrypting Colonial's IT systems. | CISA/FBI: ransomware deployed against the IT network (S2). CEO: the attack encrypted IT systems (S7). |
+| B6 | E4 | Left a ransom note demanding cryptocurrency for a decryption key, stating that data had been encrypted and stolen. | Employee found a note demanding cryptocurrency (S3). CEO: payment demanded for a key; note said data was encrypted and exfiltrated (S7). |
+| B7 | E4 | Threatened to leak the stolen data if the ransom was not paid. | Bloomberg: attackers threatened to leak the data (S3). CEO on the note's contents (S7). |
+| B8 | E12 | Provided a decryption tool after the ransom was paid. | CEO: tool provided, helpful but not perfect (S7). DarkSide gave decryption keys after payment (S4). |
 
+> **Not behaviours:** E5–E11 and E13–E16 are actions by Colonial, Mandiant, the government or the DOJ. They go in Victim Response and Lessons Learned, not the mapping.
 ---
 
 ## 7. ATT&CK Mapping *(Step 5: Map behaviours to ATT&CK)*
