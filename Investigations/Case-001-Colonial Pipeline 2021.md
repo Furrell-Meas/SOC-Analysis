@@ -112,19 +112,11 @@
 
 ## 7. ATT&CK Mapping *(Step 5: Map behaviours to ATT&CK)*
 
-*For each behaviour, ask three questions in order:*
-1. **Why** was the attacker doing this? That gives you the **Tactic**.
-2. **How** did they do it? That gives you the **Technique**.
-3. **Is there a more specific version** that matches the evidence? That gives you the **Sub-technique**. Only use it if the evidence supports it; otherwise stay at the parent technique.
-
-**Confidence levels:**
-- **High:** a primary source confirms the behaviour, and it clearly matches the technique definition.
-- **Medium:** only secondary sources or attacker claims support it, or the technique fit is reasonable but not perfect.
-- **Low:** a single unverified source, or an inference. Keep it in the table but say so.
 
 | Behaviour | Tactic | Technique ID | Technique / sub-technique name | Why this technique (justification) | Confidence | Source(s) |
 |---|---|---|---|---|---|---|
 | B1 | | T#### | | | | |
+| B3 | Collection | T1039 | Data from Network Shared Drive | The attacker searched network shares on the company's IT network and collected data off the shared drive. | High | S7 |
 
 ### 7.1 Considered but not mapped
 
