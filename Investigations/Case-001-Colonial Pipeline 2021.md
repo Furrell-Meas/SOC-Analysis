@@ -115,9 +115,17 @@
 
 | Behaviour | Tactic | Technique ID | Technique / sub-technique name | Why this technique (justification) | Confidence | Source(s) |
 |---|---|---|---|---|---|---|
-| B1 | | T#### | | | | |
-| B3 | Collection | T1039 | Data from Network Shared Drive | CEO testified that the stolen data was taken "off the share drive" | Medium (one source using "share drive") | S7 |
-| B5 | Impact | T1486 | Data Encrypted for Impact | CEO testified that the attacker deployed ransomware to encrypt the company's IT system; with the CISA/FBI confirming | High | S2, S7 |
+| B1 | Initial Access | T1078 | Valid Accounts | The CEO's testimony (S7) and Mandiant via Bloomberg (S3) show the attacker logged in with the real password of a legitimate but unused legacy VPN account. T1078 covers adversaries using legitimate credentials to gain access. Kept at the parent technique because no source states the account type. | High | S3, S7 |
+| B1 | Initial Access | T1133 | External Remote Services | The login was made through Colonial's VPN, an external-facing remote access service named in T1133's definition. T1078 describes the credentials used; T1133 the service they were used on. | High | S3, S7 |
+| B3 | Collection | T1039 | Data from Network Shared Drive | The CEO testified the stolen data was taken "off the share drive" (S7). T1039 covers collecting data from network shares. Confidence limited by the single, non-technical description of the share. | Medium | S7 |
+| B5 | Impact | T1486 | Data Encrypted for Impact | The CEO (S7) and CISA/FBI (S2) confirm DarkSide ransomware encrypted Colonial's IT systems. T1486 covers encrypting data to make it unavailable to the victim. | High | S2, S7 |
+| B6, B7 | Impact | T1657 | Financial Theft | The ransom note demanded cryptocurrency for a decryption key and threatened to leak stolen data (S3, S7); the ransom was paid to DarkSide (S1). T1657 covers extortion, including ransomware payment demands combined with threats to leak stolen data. | High | S1, S3, S7 |
+
+> **B2 not mapped (Lateral Movement).** Movement within the IT network is confirmed (S3, S7), but no source describes how it was done. See 7.1.
+>
+> **B4 tactic confirmed, technique not identified (Exfiltration).** Theft of ~100 GB is confirmed (S3, S7), but no source states the tool or protocol used. See 7.1.
+>
+> **B8 not mapped.** Providing a decryption tool after payment is part of the extortion covered by T1657, not a separate attack goal.
 
 ### 7.1 Considered but not mapped
 
