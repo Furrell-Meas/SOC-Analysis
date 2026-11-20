@@ -116,8 +116,8 @@
 | Behaviour | Tactic | Technique ID | Technique / sub-technique name | Why this technique (justification) | Confidence | Source(s) |
 |---|---|---|---|---|---|---|
 | B1 | | T#### | | | | |
-| B3 | Collection | T1039 | Data from Network Shared Drive | The attacker searched network shares on the company's IT network and collected data off the shared drive. | High | S7 |
-| B5 | Impact | T1486 | Data Encrypted for Impact | The attacker deployed ransomware to encrypt the company's IT system | High | S2, S7 |
+| B3 | Collection | T1039 | Data from Network Shared Drive | CEO testified that the stolen data was taken "off the share drive" | Medium (one source using "share drive") | S7 |
+| B5 | Impact | T1486 | Data Encrypted for Impact | CEO testified that the attacker deployed ransomware to encrypt the company's IT system; with the CISA/FBI confirming | High | S2, S7 |
 
 ### 7.1 Considered but not mapped
 
