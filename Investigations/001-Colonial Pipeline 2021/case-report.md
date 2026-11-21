@@ -169,7 +169,7 @@ flowchart LR
 
 | Technique | Log source / data component | What to look for | Example detection logic (pseudo-query) |
 |---|---|---|---|
-| T1078 | VPN gateway auth logs + Security logs + account inventory | Successful login to VPN account unused for 90+ days | vpn_auth where result="success" | join accounts on user| where days_since(prev_logon) > 90| alert high |
+| T1078 Valid Accounts | VPN gateway auth logs + directory (AD) account data (last logon, account status) + HR/account inventory | Successful VPN login to an account unused for 90+ days, or recorded as no longer in use, such as the legacy account used in B1 (S7) | `vpn_auth where result="success" \| join accounts on user \| where days_since(prev_logon) > 90 or hr_status="not in use" \| alert high` |
 
 ---
 
