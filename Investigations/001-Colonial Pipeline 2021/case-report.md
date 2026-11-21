@@ -149,15 +149,17 @@ flowchart LR
 
 ---
 
-## 9. ATT&CK Navigator Layer *(Step 6)*
+## 9. ATT&CK Navigator Layer
 
 - Layer file: [`navigator-layer.json`](./navigator-layer.json)
-- To view it, open https://mitre-attack.github.io/attack-navigator/, choose **Open Existing Layer → Upload from local**, and select the file.
-- Screenshot:
+- To view it, open https://mitre-attack.github.io/attack-navigator/, choose **Open Existing Layer → Upload from local**, and select the file. Hover over a technique to see its behaviour, evidence and sources.
+- Layer built on ATT&CK Enterprise **v20** in Navigator; all technique IDs checked against **v20.1**.
+- Techniques are coloured only under the tactic they were mapped to in Section 7 (T1078 and T1133 under Initial Access only).
+- **B2 (lateral movement)** and **B4 (exfiltration)** appear in the attack flow (Section 8) but not in this layer: the tactics are confirmed but the techniques could not be identified (see 7.1).
 
-![ATT&CK Navigator layer for this case](./attack-map.png)
+![ATT&CK Navigator layer for CASE-002](./CASE002_Colonial_Pipeline_2021.png)
 
-**Colour key:** [e.g. red = high confidence, orange = medium, yellow = low]
+**Colour key:** 🟥 score 3 = High confidence · 🟧 score 2 = Medium · 🟨 score 1 = Low
 
 ---
 
