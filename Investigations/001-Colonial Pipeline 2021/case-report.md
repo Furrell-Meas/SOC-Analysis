@@ -157,7 +157,7 @@ flowchart LR
 - Techniques are coloured only under the tactic they were mapped to in Section 7 (T1078 and T1133 under Initial Access only).
 - **B2 (lateral movement)** and **B4 (exfiltration)** appear in the attack flow (Section 8) but not in this layer: the tactics are confirmed but the techniques could not be identified (see 7.1).
 
-![ATT&CK Navigator layer for CASE-002](./CASE002_Colonial_Pipeline_2021.png)
+![ATT&CK Navigator layer for CASE-001](./CASE001_Colonial_Pipeline_2021.png)
 
 **Colour key:** 🟥 score 3 = High confidence · 🟧 score 2 = Medium · 🟨 score 1 = Low
 
