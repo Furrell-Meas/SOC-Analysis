@@ -180,16 +180,57 @@ flowchart LR
 
 | Technique | Mitigation ID | Recommendation | Priority |
 |---|---|---|---|
-| T#### | M#### | | High / Medium / Low |
+| T1133 External Remote Services | M1032 Multi-factor Authentication | Require MFA on every VPN and remote-access account, including legacy and rarely used profiles, with no single-factor exceptions. Use phishing-resistant methods (FIDO2 security keys or number matching) instead of SMS codes or simple push approvals. Also reduces T1078. | High |
+| T1078 Valid Accounts | M1018 User Account Management | Review all VPN and remote-access accounts every quarter. Automatically disable any account with no login in 60 days, and remove access the same day a person leaves or changes role. Assign each account a named owner, so that no account stays active without anyone using it. | High |
+| T1657 Financial Theft | No direct ATT&CK mitigation | Create and rehearse a ransomware incident response plan. It should include: who decides whether to pay a ransom and on what criteria; legal, insurer and law-enforcement contacts; and a process to keep running or manually restore operations when IT systems are down. Colonial had no such guidance before the attack. | High |
 
----
+--- 
 
 ## 12. Victim Response *(Step 3/7)*
 
-*What the victim did to contain, eradicate and recover. These are not attacker behaviours, so they don't get ATT&CK IDs.*
+*What the victim and other defenders did to detect, contain, eradicate and recover. These are not attacker behaviours, so they don't get ATT&CK IDs. Actions are grouped by the NIST SP 800-61 incident response lifecycle.*
 
-- [Action] (S#)
+### 12.1 Response actions
 
+| # | IR phase | Date / time (ET) | Action taken | Who acted | Source(s) | Notes / conflicts |
+|---|---|---|---|---|---|---|
+| R1 | Detection & Analysis | 7 May 2021, just before 05:00 | A control-room employee found a ransom note on a computer and alerted an operations supervisor | Colonial (control room) | S3 | Detection came from the attacker's own ransom note, not from a security alert |
+| R2 | Containment | 7 May 2021, ~05:00–06:10 | The supervisor started a shutdown; the entire pipeline was offline by 06:10, the first full shutdown in the company's 57-year history | Colonial (operations) | S3, S7 | **Precautionary.** Done because OT compromise couldn't be ruled out, not because OT was known to be affected |
+| R3 | Containment | 7–12 May 2021 | Kept the pipeline under pressure to speed restart, checked gauges by hand, increased aerial and ground patrols (~29,000 miles driven) to rule out physical damage, and ran small sections manually | Colonial (operations) | S7 | Safety checks on the physical asset while the digital investigation ran |
+| R4 | Detection & Analysis | 7 May 2021, within hours | Reported the attack to the FBI (Atlanta office, which referred Colonial to the San Francisco team that tracks DarkSide) | Colonial | S7, S4, S1 | DOJ publicly thanked Colonial for notifying the FBI quickly (S1) |
+| R5 | Detection & Analysis | 7 May 2021, shortly after 12:00 | Joined a call with the FBI and CISA, which the FBI arranged | Colonial, FBI, CISA | S7 | **Disputed.** Senators questioned why Colonial didn't contact CISA directly; the CEO said it would have if the FBI hadn't (S7) |
+| R6 | Detection & Analysis | From 7 May 2021 | Notified the Department of Energy, FERC, PHMSA, trade groups and other agencies; DOE acted as the central coordination point | Colonial | S7 | — |
+| R7 | Detection & Analysis | 7 May 2021 onward (exact date not stated) | Engaged **Mandiant** to lead investigation and restoration, **Dragos** for OT security, and **Black Hills Information Security** to advise on defences | Colonial | S7, S4, S3 | Dragos specialises in industrial / OT security, which fits the need to rule out OT compromise |
+| R8 | Detection & Analysis | 7 May 2021, evening | Hired legal counsel and ransom-negotiation experts | Colonial | S7 | — |
+| R9 | Detection & Analysis | After 7 May 2021 | Shared indicators of compromise with the FBI and CISA; CISA later published attacker IP addresses for industry | Colonial, CISA | S7 | Example of information sharing benefiting other organisations |
+| R10 | Detection & Analysis | By 8 Jun 2021 | Investigation found the attack concentrated in the **IT network**; Mandiant had not confirmed any OT compromise | Mandiant | S7, S3, S4 | Supports mapping to Enterprise ATT&CK only (no ICS techniques) |
+| R11 | Eradication & Recovery | 7 May 2021, evening | Decided to negotiate with DarkSide | Colonial (CEO) | S7 | CEO said the decision was the company's alone; he knew the FBI's position against paying and said Colonial checked DarkSide wasn't on the OFAC sanctions list (S7) |
+| R12 | Eradication & Recovery | 8 May 2021 | Paid a ransom of ~**75 BTC** (~US$4.4M) | Colonial | S1, S7 | **Conflict.** S4: ~$4.3M; S6: "nearly $5M" paid on 7 May (anonymous sources). Primary sources S1/S7 give 75 BTC on 8 May; USD figures vary with the BTC price |
+| R13 | Eradication & Recovery | After 8 May 2021 | Received a decryptor from the attackers; it helped partially, and Colonial also restored from its own backups | Colonial | S6, S7, S4 | **Conflict.** S6 (anonymous, 14 May): decryptor too slow to be of much use. CEO under oath (S7): worked to some degree, not perfect |
+| R14 | Eradication & Recovery | Date not stated | Deactivated the unused legacy VPN account the attackers used | Colonial | S3 | The account lacked MFA (S3, S7) |
+| R15 | Eradication & Recovery | Date not stated | Mandiant swept the network and installed new detection tools to catch follow-on attacks | Mandiant | S3 | — |
+| R16 | Eradication & Recovery | 12 May 2021, ~17:00 | Restarted fuel shipments after confirming the attack was contained; physical inspection found no pipeline damage | Colonial | S6, S3 | Pipeline down ~5.5 days |
+| R17 | Eradication & Recovery | Through June 2021 | Continued restoring business IT systems; financial systems came back online around 8 June; CEO said full restoration could take months or years | Colonial | S4, S7 | Pipeline running ≠ fully recovered |
+| R18 | Post-Incident | By 8 Jun 2021 | Rebuilt and restored critical IT systems; said it was implementing the new TSA and CISA directives and was in full compliance with the new TSA requirements | Colonial | S7 | — |
+| R19 | Post-Incident | 8 Jun 2021 | CEO agreed MFA should be required going forward | Colonial (CEO) | S7 | Directly addresses the initial access weakness |
+| R20 | Post-Incident | Late July 2021 (planned) | Scheduled a previously delayed voluntary TSA architecture design review (VADR) | Colonial, TSA | S7 | — |
+| R21 | Post-Incident | By 8 Jun 2021 | Began evaluating the ability to operate the pipeline manually | Colonial | S7 | Resilience improvement: run without IT if needed |
+| R22 | Post-Incident | 7 Jun 2021 | DOJ seized **63.7 BTC** (~US$2.3M) of the ransom by tracing payments on the public Bitcoin ledger to an address whose private key the FBI held | FBI / DOJ | S1, S7 | CEO credited Colonial's quiet, early cooperation with law enforcement (S7). Gap of ~11.3 BTC not explained (S1) |
+| R23 | Post-Incident | 8 Jun 2021 | CEO testified before the US Senate | Colonial (CEO) | S7, S4 | — |
+
+### 12.2 Key observations (carry into Section 13)
+
+1. **Detection was late and came from the attacker.** The attackers got in on 29 April (S3); Colonial learned of it from a ransom note on 7 May. No security alert caught the intrusion or the data theft first.
+2. **Containment was precautionary and costly.** The IT/OT boundary wasn't trusted enough to keep the pipeline running, so all of it was shut down.
+3. **Paying didn't guarantee fast recovery.** Backups were still needed, and business systems took weeks.
+4. **Reporting helped recover money.** Early FBI notification contributed to the partial recovery of the ransom.
+
+### 12.3 Response-related intelligence gaps
+
+- Exact date the legacy VPN account was deactivated.
+- Exactly how much was restored by the decryptor versus backups.
+- Whether Colonial finished reviewing the ~100 GB of data the attackers took (S7 says the review wasn't complete at the time of the hearing).
+- Where the ~11.3 BTC not seized by DOJ went.
 ---
 
 ## 13. Analyst Notes & Lessons Learned *(Step 8)*
