@@ -1,4 +1,4 @@
-## 1. Case Information *(Step 2: Open the case)*
+## 1. Case Information
 
 | Field | Value |
 |---|---|
@@ -6,8 +6,8 @@
 | Incident name | Colonial Pipeline 2021 |
 | Analyst | Furrell-Meas |
 | Date opened | 17 November 2026 |
-| Date closed | [dd Month yyyy] |
-| Status | In progress |
+| Date closed | 20 November 2026 |
+| Status | Closed |
 | ATT&CK version used | Enterprise v20.1 |
 | Case type | Retrospective analysis of a public incident (open-source only) |
 | Classification | TLP:CLEAR (public sources only) |
@@ -20,7 +20,7 @@ In May 2021, criminals using DarkSide ransomware broke into the IT network of Co
 
 ---
 
-## 3. Incident Overview *(Step 2)*
+## 3. Incident Overview 
 
 | Field | Value |
 |---|---|
@@ -37,7 +37,7 @@ In May 2021, criminals using DarkSide ransomware broke into the IT network of Co
 
 ---
 
-## 4. Sources *(Step 1: Collect sources)*
+## 4. Sources 
 
 | ID | Title | Publisher | Date | Type | Reliability | Link |
 |---|---|---|---|---|---|---|
@@ -51,7 +51,7 @@ In May 2021, criminals using DarkSide ransomware broke into the IT network of Co
 
 ---
 
-## 5. Timeline of Events *(Step 3: Build the timeline)*
+## 5. Timeline of Events
 
 *Attacker actions plus key victim milestones. The full victim response is in Section 12 (R-IDs).*
 
@@ -79,7 +79,7 @@ In May 2021, criminals using DarkSide ransomware broke into the IT network of Co
 
 ---
 
-## 6. Behaviour Extraction *(Step 4: Break events into behaviours)*
+## 6. Behaviour Extraction 
 
 | Behaviour | From event | Attacker action | Evidence (paraphrase + source) |
 |---|---|---|---|
@@ -96,7 +96,7 @@ In May 2021, criminals using DarkSide ransomware broke into the IT network of Co
 
 ---
 
-## 7. ATT&CK Mapping *(Step 5: Map behaviours to ATT&CK)*
+## 7. ATT&CK Mapping
 
 | Behaviour | Tactic | Technique ID | Technique / sub-technique name | Why this technique (justification) | Confidence | Source(s) |
 |---|---|---|---|---|---|---|
@@ -122,7 +122,7 @@ In May 2021, criminals using DarkSide ransomware broke into the IT network of Co
 
 ---
 
-## 8. Attack Flow *(Step 6: Visualise)*
+## 8. Attack Flow 
 
 ```mermaid
 flowchart LR
@@ -151,7 +151,7 @@ flowchart LR
 
 ---
 
-## 10. Detection Opportunities *(Step 7: Defensive analysis)*
+## 10. Detection Opportunities 
 
 | Technique | Log source / data component | What to look for | Example detection logic (pseudo-query) |
 |---|---|---|---|
@@ -161,7 +161,7 @@ flowchart LR
 
 ---
 
-## 11. Mitigations & Recommendations *(Step 7)*
+## 11. Mitigations & Recommendations 
 
 | Technique | Mitigation ID | Recommendation | Priority |
 |---|---|---|---|
@@ -171,7 +171,7 @@ flowchart LR
 
 ---
 
-## 12. Victim Response *(Step 3/7)*
+## 12. Victim Response
 
 *What the victim and other defenders did to detect, contain, eradicate and recover. These are not attacker behaviours, so they don't get ATT&CK IDs. Actions are grouped by the NIST SP 800-61 incident response lifecycle.*
 
@@ -219,7 +219,7 @@ flowchart LR
 
 ---
 
-## 13. Analyst Notes & Lessons Learned *(Step 8)*
+## 13. Analyst Notes & Lessons Learned 
 
 **Key lessons (for defenders):**
 1. **Disable unused accounts.** The attackers got in through a legacy VPN account that was no longer meant to be in use but still worked (S3, S7).
@@ -235,7 +235,7 @@ flowchart LR
 - Sources disagree on the ransom amount and date (S6 vs S1/S7); this case uses the primary sources: 75 BTC on 08 May 2021.
 - Sources disagree on how useful the decryptor was (S6 vs S7).
 
-**What I learned doing this analysis:** *(rewrite in your own words)*
+**What I learned doing this analysis:**
 - Government and vendor reports (S2, S5) often describe a threat group in general, not one incident, so I only mapped what was confirmed for Colonial.
 - The pipeline shutdown, the best-known impact, was Colonial's own decision, not an attacker technique.
 - When sources disagree on numbers, rely on the primary sources and the value that doesn't change (75 BTC, not the dollar amount).
@@ -248,3 +248,4 @@ flowchart LR
 | Date | Change |
 |---|---|
 | 17 November 2026 | Case opened |
+| 21 November 2026 | Case closed |
